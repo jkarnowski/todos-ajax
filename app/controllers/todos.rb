@@ -18,19 +18,16 @@ get '/todos/new' do
 end
 
 post '/todos' do
-  @todo = Todo.new(params[:todos])
-  if @todo.save
+  @new_todo = Todo.new(params[:todos])
+  if @new_todo.save
     if request.xhr?
-      content_type :json
-      data = {
-        id: @todo.id,
-        task: @todo.task,
-        description: @todo.description
-        }.to_json
+      # sends back a partial and just the new object data
+      erb :'_task', layout: false, locals: {todo: @new_todo }
     else
       redirect '/todos'
     end
   else
+    status 422
     redirect '/todos/new'
   end
 end

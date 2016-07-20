@@ -32,6 +32,7 @@ function postNewTodo(){
     event.preventDefault();
     // grabs the data from the form
     var formData = $(this).serialize();
+    $('input[type="text"]').val('')
 
     $.ajax({
       url: '/todos',
@@ -40,7 +41,7 @@ function postNewTodo(){
     })
     .done(function(serverData){
       console.log('SUCCESS', serverData)
-      $('.todos').append();
+      $('.todos').prepend(serverData);
     })
     .fail(function(serverData){
       console.log('FAILING')

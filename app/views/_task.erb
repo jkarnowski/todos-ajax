@@ -1,0 +1,5 @@
+<p id="task-<%= todo.id %>"> TASK: <a href="/todos/<%= todo.id %>"><%= todo.task %></a> | HELPFUL HINT: <%= todo.description %></p>
+<% if todo.completed? %>
+<% else %>
+<button type="button" id="<%=todo.id %>" class="btn btn-default">COMPLETE!</button>
+<% end %>
