@@ -32,6 +32,7 @@ function postNewTodo(){
     event.preventDefault();
     // grabs the data from the form
     var formData = $(this).serialize();
+    // resets the input fields in the form
     $('input[type="text"]').val('')
 
     $.ajax({

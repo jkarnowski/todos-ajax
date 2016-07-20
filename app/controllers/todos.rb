@@ -12,7 +12,6 @@ get '/todos/new' do
   if request.xhr? ## AJAX request
     erb :new, layout: false
   else
-    # sending ALL THE DATA HTML CSS AND JS for NEW FORM - HEADERS
     erb :new
   end
 end
