@@ -21,10 +21,12 @@ post '/todos' do
   @todo = Todo.new(params[:todos])
   if @todo.save
     if request.xhr?
-      p @todo
       content_type :json
-      data = {new_todo: @todo}.to_json
-      # erb :new, layout: false
+      data = {
+        id: @todo.id,
+        task: @todo.task,
+        description: @todo.description
+        }.to_json
     else
       redirect '/todos'
     end

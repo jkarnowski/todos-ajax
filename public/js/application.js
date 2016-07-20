@@ -40,7 +40,7 @@ function postNewTodo(){
     })
     .done(function(serverData){
       console.log('SUCCESS', serverData)
-      $('.todos').append(serverData);
+      $('.todos').append();
     })
     .fail(function(serverData){
       console.log('FAILING')

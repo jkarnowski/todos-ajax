@@ -8,12 +8,8 @@
   </div>
 
   <div class='todos'>
-  <% @todos.each do |todo| %>
-    <p id="task-<%= todo.id %>"> TASK: <a href="/todos/<%= todo.id %>"><%= todo.task %></a> | HELPFUL HINT: <%= todo.description %></p>
-    <% if todo.completed? %>
-    <% else %>
-      <button type="button" id="<%=todo.id %>" class="btn btn-default">COMPLETE!</button>
+    <% @todos.each do |todo| %>
+    <%= erb :'_task', layout: false, locals: {todo: todo} %>
     <% end %>
-  <% end %>
   </div>
 </div>
