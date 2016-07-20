@@ -18,7 +18,6 @@ get '/todos/new' do
 end
 
 post '/todos' do
-  p params
   @todo = Todo.new(params[:todos])
   if @todo.save
     if request.xhr?

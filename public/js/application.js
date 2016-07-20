@@ -25,10 +25,13 @@ function getNewTodosForm() {
 };
 
 function postNewTodo(){
-  $('#new-todo').on('submit', function(event){
+  // element that is listening for an event: $('#new-todo')
+  // event that happens: submit
+  // passing in a child DOM element of the element w the event listener: 'form'
+  $('#new-todo').on('submit', 'form', function(event){
     event.preventDefault();
-    var formData = $('#new-todo form').serialize()
-    console.log(formData)
+    // grabs the data from the form
+    var formData = $(this).serialize();
 
     $.ajax({
       url: '/todos',
@@ -37,6 +40,7 @@ function postNewTodo(){
     })
     .done(function(serverData){
       console.log('SUCCESS', serverData)
+      $('.todos').append(serverData);
     })
     .fail(function(serverData){
       console.log('FAILING')
